@@ -1,0 +1,5 @@
+C:\csc2401\code\Ass3\USQCSC2401A3>g++ -Wall task-B.2.cpp
+
+C:\csc2401\code\Ass3\USQCSC2401A3>a
+Sports Car   From 1900 to 2014
+Model: AH211   Price: 23456.8

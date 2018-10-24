@@ -1,32 +1,33 @@
 #include<string>
 #include<iostream>
+#include<iomanip>
 #include <queue>
 using namespace std;
 
 class Car {
 	public:
-		Car();
-		Car(string m, double p);
-		string get_model();
-		double get_price();
-		void display()const;
+		Car();						//Default constructor
+		Car(string m, double p);	//Constructor initialising all private variables
+		string get_model();			//return model of car
+		double get_price();			//return the price of the car
+		void display()const;		//print the model and price of the car
 	private:
-		string model;
-		double price;
+		string model;				//model of the car
+		double price;				//price of the car
 };
 
 class Collection {
 	public:
-		Collection();
-		Collection(string n, string d);
-		void add_item(Car c); 	// Add Car c to priority_queue task.
-		void display_best(); 	// Display information of the Best car.
-								// Use price to determine “best”.
-								// Higher price means “better”.
+		Collection();					// Default constructor
+		Collection(string n, string d);	// Constructor initialising the name and description of the collection
+		void add_item(Car c); 			// Add Car c to priority_queue task.
+		void display_best(); 			// Display information of the Best car.
+										// Use price to determine “best”.
+										// Higher price means “better”.
 	private:
-		priority_queue <Car> task;
-		string name; // Name of the collection
-		string description; // Descriptions of the collection
+		priority_queue <Car> task;		// Priority queue containing all car objects in the collection
+		string name; 					// Name of the collection
+		string description; 			// Descriptions of the collection
 };
 
 bool operator<(Car left, Car right){
@@ -72,7 +73,7 @@ double Car::get_price(){
 }
 
 void Car::display() const{
-	cout<<"Model: "<<model<<'Price: '<<price<<endl;
+	cout<<fixed<<setprecision(1)<<"Model: "<<setw(7)<<model<<" Price: "<<price<<endl;
 }
 
 //Implement Collection member functions
@@ -91,6 +92,6 @@ void Collection::add_item(Car c){
 }
 
 void Collection::display_best(){
-	cout<<name<<'\t'<<description<<endl;
+	cout<<setw(12)<<left<<name<<" "<<description<<endl;
 	task.top().display();
 }
