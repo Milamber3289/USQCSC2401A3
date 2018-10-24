@@ -37,14 +37,14 @@ class Car {
 
 class Person {
 	public:
-		Person();
-		Person(string n, int a);
-		int get_age();
-		bool operator< (Person& b);
-		void display()const;
+		Person();					//Default constructor
+		Person(string n, int a);	//Constructor initialising all private variables
+		int get_age();				//return persons age as an int
+		bool operator< (Person& b);	//overload < operator for use in Priority Queue. Highest age is highest priority
+		void display()const;		//print the name and age of the Person to the output stream
 	private:
-		string name;
-		double age;
+		string name;				//name of the person
+		double age;					//age of the person. Suspect typo in assignment task sheet made this a double, with getter and setter as an int. Have used static_cast in various functions to match assignment task sheet and demo output
 };
 
 class Book {
@@ -61,9 +61,12 @@ class Book {
 
 int main(){
 	
+	//instantiate 3 Person objects
 	Person p1("Peter", 64);
 	Person p2("Paul", 46);
 	Person p3("Mary", 24);
+	
+	//Instantiate a collection of People using the template
 	Collection<Person> P("Family", "My Cousins");
 	P.add_item(p1);
 	P.add_item(p2);
@@ -71,9 +74,12 @@ int main(){
 	P.display_best();
 	cout << endl; 
 	
+	//instantiate 3 Person objects
 	Book b1("Moby Dick", "123-4567-89");
 	Book b2("Wuthering Heights", "921-4567-89");
 	Book b3("Thre Three Musketeers", "654-4567-89");
+	
+	//Instantiate a collection of People using the template
 	Collection<Book> b("My Library", "Literature");
 	b.add_item(b1);
 	b.add_item(b2);
@@ -175,14 +181,27 @@ void Book::display() const{
 	cout<<fixed<<setprecision(1)<<"Name: "<<setw(7)<<name<<" ISBN: "<<isbn<<endl;
 }
 
-/*class Person {
-	public:
-		Person();
-		Person(string n, int a);
-		int get_age();
-		bool operator< (Person& b);
-		void display()const;
-	private:
-		string name;
-		double age;
-};*/
+//implement Person member functions
+Person::Person(){
+	name="";
+	age=0;
+}
+
+Person::Person(string n, int a){
+	name=n;
+	age=static_cast<double>(a);
+}
+
+int Person::get_age(){
+	return static_cast<int>(age);
+}
+
+bool Person::operator<(Person& right){
+	//operator overloaded to allow priority_queue to function correctly
+	return this->get_age()<right.get_age();
+}
+
+void Person::display() const{
+	cout<<fixed<<setprecision(1)<<"Name: "<<setw(7)<<name<<" Age: "<<static_cast<int>(age)<<endl;
+}
+

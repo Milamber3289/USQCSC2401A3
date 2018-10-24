@@ -2,12 +2,18 @@
 Compilation Messages:
 ***************************************************************
 
-C:\csc2401\code\Ass3\USQCSC2401A3>g++ -Wall task-B.2.cpp
+C:\csc2401\code\Ass3\USQCSC2401A3>g++ -Wall task-B.3.cpp
 
 ***************************************************************
 Sample Runs:
 ***************************************************************
 
 C:\csc2401\code\Ass3\USQCSC2401A3>a
+Family       My Cousins
+Name: Peter   Age: 64
+
+My Library   Literature
+Name: Wuthering Heights ISBN: 921-4567-89
+
 Sports Car   From 1900 to 2014
 Model: AH211   Price: 23456.8
